@@ -1,0 +1,12 @@
+<h2 class="mt-3 mb-3 text-info ">
+  Order Cancel Request
+</h2>
+
+<form action="/admin/users/orders/cancelReason/<%= orderId %>" method="post">
+  <div class="form-group mt-2">
+    <label for="condition">Order Cancellation Reason </label>
+    <textarea type="text" class="form-control " placeholder="Enter your reason for order cancellation..."
+      id="descripttion" name="reason" rows="7" required></textarea>
+  </div>
+  <button type="submit" class="btn btn-md btn-info  mb-4">Submit Reason</button>
+</form>
