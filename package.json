@@ -4,7 +4,7 @@
 	"description": "artenvie project",
 	"main": "app.js",
 	"scripts": {
-		"start": "node app.js"
+		"test": "testing"
 	},
 	"dependencies": {
 		"bcryptjs": "^2.4.3",
