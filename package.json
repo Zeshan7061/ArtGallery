@@ -2,7 +2,7 @@
 	"name": "fyp-project",
 	"version": "1.0.0",
 	"description": "artenvie project",
-	"main": "app.js",
+	"main": "index.js",
 	"scripts": {
 		"start": "node app.js"
 	},
