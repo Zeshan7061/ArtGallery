@@ -10,7 +10,7 @@ const fileUpload = require('express-fileupload');
 const passport = require('passport');
 const methodOverride = require('method-override');
 const path = require('path');
-const dotenv = require('dotenv');
+// const dotenv = require('dotenv');
 //const mongoose = require('mongoose');
 const dbConnection = require('./config/db');
 const errorHandler = require('./middlewares/error');
@@ -27,7 +27,7 @@ const app = express();
 const server = http.createServer(app);
 const io = socketio(server);
 
-const port = process.env.PORT || 3000  ;
+const port = process.env.PORT || 3000;
 
 module.exports.getIO = function () {
 	return io;
