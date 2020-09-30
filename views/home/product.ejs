@@ -26,14 +26,14 @@
 				<% if (post.file.length > 1) { %>
 
 				<div class="big">
-					<img data-src="/uploads/<%= post.file[0] %>" id="expandedImg" class="img-fluid img-thumbnail lazy" />
+					<img src="/uploads/<%= post.file[0] %>" id="expandedImg" class="img-fluid img-thumbnail lazy" />
 				</div>
 
 				<div class="sub">
 					<% post.file.forEach(f => { %>
 
 					<div class="column float-left">
-						<img data-src="/uploads/<%= f %>" style="width: 100%;" class="lazy" onclick="myFunction(this);" />
+						<img src="/uploads/<%= f %>" style="width: 100%;" class="lazy" onclick="myFunction(this);" />
 					</div>
 
 					<% }) %>
@@ -43,7 +43,7 @@
 				<% } else { %>
 				<div class="image-gallery">
 					<a href="/uploads/<%= post.file %>" class="magnifier-thumb-wrapper"><img
-							data-src="/uploads/<%= post.file[0] %>" alt="Artwork Image" id="artImg"
+							src="/uploads/<%= post.file[0] %>" alt="Artwork Image" id="artImg"
 							class="img-fluid img-thumbnail w-100 lazy" /></a>
 				</div>
 				<% } %>
@@ -206,7 +206,7 @@
 									<% if (comment.approveComment) { %>
 									<li class="media">
 										<a href="#" class="mr-3">
-											<img data-src="/uploads/users/<%= comment.image %>" alt="" class="lazy">
+											<img src="/uploads/users/<%= comment.image %>" alt="" class="lazy">
 										</a>
 										<div class="media-body">
 											<strong class="text-success"><%= comment.username %></strong>
@@ -244,7 +244,7 @@
 				<div class="card shadow" style="width: auto;">
 					<div class="inner img">
 						<a href="/home/productpage/<%=artwork.slug%>">
-							<img class="card-img-top lazy" data-src="/uploads/<%=artwork.file[0]%>" alt="" />
+							<img class="card-img-top lazy" src="/uploads/<%=artwork.file[0]%>" alt="" />
 						</a>
 					</div>
 

@@ -35,13 +35,13 @@
 					<div class="inner img">
 						<% if (post.buyingFormat == 'Auction') { %>
 						<a href="/home/biddingroom/placebid/<%= post.id %>">
-							<img class="card-img-top lazy" data-src="/uploads/<%=post.file%>" alt="" />
+							<img class="card-img-top lazy" src="/uploads/<%=post.file%>" alt="" />
 						</a>
 						<% } else { %>
 						<a href="/home/productpage/<%=post.slug%>">
 							<% if (post.file.length > 1) { %>
-							<img class="card-img-top lazy" data-src="/uploads/<%=post.file[0]%>" alt="" /> <% } else { %>
-							<img class="card-img-top lazy" data-src="/uploads/<%=post.file%>" alt="" />
+							<img class="card-img-top lazy" src="/uploads/<%=post.file[0]%>" alt="" /> <% } else { %>
+							<img class="card-img-top lazy" src="/uploads/<%=post.file%>" alt="" />
 							<% } %>
 						</a>
 						<% } %>
