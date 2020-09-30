@@ -23,23 +23,20 @@
 			<div class="col-md-4 profile-wrapper">
 				<div class="row justify-content-center">
 					<div class="profile-img mt-3">
-						<img src="/uploads/users/<%= artist.image %>" alt="" class="img-fluid rounded-circle"
-							width="180" style="box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3); border: 1px solid black" />
+						<img src="/uploads/users/<%= artist.image %>" alt="" class="img-fluid rounded-circle" width="180" style="box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3); border: 1px solid black" />
 						<input type="hidden" value="<%= artist.image %>" id="artistImage" />
 					</div>
 					<div class="mt-4 justify-content-center">
 						<h4 class="text-center profile-username"><%= artist.username %></h4>
 
-						<p class="artist-profile-quote text-center">"Art enables us to find ourselves and lose ourselves
-							at the same time"</p>
+						<p class="artist-profile-quote text-center">"Art enables us to find ourselves and lose ourselves at the same time"</p>
 					</div>
 				</div>
 
 				<% if (user != undefined) { %> <% if (user.userType == "Customer") { %>
 
 				<div class="row contact justify-content-center">
-					<a href="/admin/inbox/<%= artist.id %>/<%= artist.username %>" class="btn btn-sm btn-primary">
-						Contact Me </a>
+					<a href="/admin/inbox/<%= artist.id %>/<%= artist.username %>" class="btn btn-sm btn-primary"> Contact Me </a>
 				</div>
 
 				<% } %> <% if (user.userType == "Artist") { %>
@@ -54,11 +51,9 @@
 
 				<div class="row mt-2">
 					<div class="col-12 p-0 profile-info">
-						<p><span class="float-left mb-1 profile-info-color"> Language:</span> <span class="float-right">
-								<%= artist.languages %> </span></p>
+						<p><span class="float-left mb-1 profile-info-color"> Language:</span> <span class="float-right"> <%= artist.languages %> </span></p>
 						<div class="clearfix"></div>
-						<p><span class="float-left mb-1 profile-info-color"> From:</span> <span class="float-right">
-								<%= artist.location %> </span></p>
+						<p><span class="float-left mb-1 profile-info-color"> From:</span> <span class="float-right"> <%= artist.location %> </span></p>
 						<div class="clearfix"></div>
 
 						<div class="profile-line mt-1 mb-2"></div>
@@ -72,10 +67,8 @@
 
 						<span class="profile-info-color"> Description:</span>
 						<p class="description" style="max-height: 250px; text-align: justify">
-							<%= artist.description %> Lorem Ipsum has been the industry's standard dummy text ever since
-							the 1500s, when an unknown printer took a galley of type and scrambled it to make a type
-							specimen book. It has survived not only five centuries, but also the leap into electronic
-							typesetting, remaining essentially unchanged.
+							<%= artist.description %> Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type
+							specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
 						</p>
 					</div>
 				</div>
@@ -85,10 +78,9 @@
 				<div class="artist-reviews">
 					<h1 class="">
 						Reviews as Artist
-						<span class="average-rating"><i class="fa fa-star average-rating"></i>
-							<% if (reviews.length > 0) { %> <% let rating = 0 %> <% reviews.forEach(r => { %>
-							<% rating += r.rating %> <% }) %> <% rating /= reviews.length %> <%= rating.toFixed(2) %>
-							<% } else { %>
+						<span class="average-rating"
+							><i class="fa fa-star average-rating"></i>
+							<% if (reviews.length > 0) { %> <% let rating = 0 %> <% reviews.forEach(r => { %> <% rating += r.rating %> <% }) %> <% rating /= reviews.length %> <%= rating.toFixed(2) %> <% } else { %>
 							<span>Not yet reviewed</span>
 							<% } %>
 						</span>
@@ -101,7 +93,8 @@
 								<img src="/images/<%= r.customerImage %>" title="<%= r.customerName %>" />
 							</a>
 							<div class="media-body col-md-11">
-								<strong class="text-success"><%= r.customerName %>
+								<strong class="text-success"
+									><%= r.customerName %>
 									<span class="rating"><i class="fa fa-star rating"></i> <%= r.rating %></span>
 								</strong>
 								<p><%= r.review %></p>
@@ -131,7 +124,7 @@
 				<div class="card shadow" style="width: auto">
 					<div class="inner img">
 						<a href="/home/productpage/<%=artwork.slug%>">
-							<img class="card-img-top" src="/uploads/<%=artwork.file[0]%>" alt="" />
+							<img class="card-img-top lazy" data-src="/uploads/<%=artwork.file[0]%>" alt="" />
 						</a>
 					</div>
 
@@ -154,8 +147,7 @@
 						<% } %> <% if (artwork.buyingFormat != 'Auction' ) { %>
 						<h5 class="mt-2 float-right">
 							<% if (artwork.buyingFormat == 'Discount') { %>
-							<span class="discount pr-2" style="text-decoration: line-through"> $<%= artwork.price %>
-							</span>
+							<span class="discount pr-2" style="text-decoration: line-through"> $<%= artwork.price %> </span>
 
 							<div class="text-success float-right">$<%= artwork.discountPrice %></div>
 
@@ -175,9 +167,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12 text-center">
-				<a href="/home/user/artist/artworks/<%= artist.slug %>" class="btn btn-primary"
-					style="margin-top: 50px; padding: 7px 15px; word-spacing: 2px"> See More <%= artist.username %>
-					Artworks </a>
+				<a href="/home/user/artist/artworks/<%= artist.slug %>" class="btn btn-primary" style="margin-top: 50px; padding: 7px 15px; word-spacing: 2px"> See More <%= artist.username %> Artworks </a>
 			</div>
 		</div>
 	</div>

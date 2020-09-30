@@ -26,14 +26,14 @@
 				<% if (post.file.length > 1) { %>
 
 				<div class="big">
-					<img src="/uploads/<%= post.file[0] %>" id="expandedImg" class="img-fluid img-thumbnail" />
+					<img data-src="/uploads/<%= post.file[0] %>" id="expandedImg" class="img-fluid img-thumbnail lazy" />
 				</div>
 
 				<div class="sub">
 					<% post.file.forEach(f => { %>
 
 					<div class="column float-left">
-						<img src="/uploads/<%= f %>" style="width: 100%;" onclick="myFunction(this);" />
+						<img data-src="/uploads/<%= f %>" style="width: 100%;" class="lazy" onclick="myFunction(this);" />
 					</div>
 
 					<% }) %>
@@ -43,8 +43,8 @@
 				<% } else { %>
 				<div class="image-gallery">
 					<a href="/uploads/<%= post.file %>" class="magnifier-thumb-wrapper"><img
-							src="/uploads/<%= post.file[0] %>" alt="" id="artImg"
-							class="img-fluid img-thumbnail w-100" /></a>
+							data-src="/uploads/<%= post.file[0] %>" alt="Artwork Image" id="artImg"
+							class="img-fluid img-thumbnail w-100 lazy" /></a>
 				</div>
 				<% } %>
 			</div>
@@ -102,12 +102,12 @@
 					</p>
 					<div class="clearfix"></div>
 
-					<div class="artwork-text-line mt-2 mb-2"></div>
 
 					<% if (user == undefined || user.userType == 'Customer') { %>
 
 					<% if (typeof session.cart !== 'undefined' && Object.keys(session.cart.items).includes(post.id)) { %>
 
+					<div class="artwork-text-line mt-2 mb-2"></div>
 					<a href="#" class="btn btn-secondary" id="remove__btn"
 						onclick="cart('/home/order/cart/delete/<%= post.id %>')">
 						Remove from Cart
@@ -206,7 +206,7 @@
 									<% if (comment.approveComment) { %>
 									<li class="media">
 										<a href="#" class="mr-3">
-											<img src="/uploads/users/<%= comment.image %>" alt="" class="">
+											<img data-src="/uploads/users/<%= comment.image %>" alt="" class="lazy">
 										</a>
 										<div class="media-body">
 											<strong class="text-success"><%= comment.username %></strong>
@@ -244,7 +244,7 @@
 				<div class="card shadow" style="width: auto;">
 					<div class="inner img">
 						<a href="/home/productpage/<%=artwork.slug%>">
-							<img class="card-img-top" src="/uploads/<%=artwork.file[0]%>" alt="" />
+							<img class="card-img-top lazy" data-src="/uploads/<%=artwork.file[0]%>" alt="" />
 						</a>
 					</div>
 
@@ -288,22 +288,10 @@
 			</div>
 			<% }) %>
 		</div>
-
-
-
-
-
-
-
-
-
-
-
-
 	</div>
 
 </div>
 </div>
 
 
-<script src="/js/product.js"></script>
+<script src="/js/product.js" defer></script>

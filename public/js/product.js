@@ -1,9 +1,13 @@
 function myFunction(imgs) {
+	const innerImgs = document.querySelectorAll('.sub > div img');
+
 	var expandImg = document.getElementById('expandedImg');
 	var imgText = document.getElementById('imgtext');
 	expandImg.src = imgs.src;
-	imgText.innerHTML = imgs.alt;
+	// imgText.innerHTML = imgs.alt;
 	expandImg.parentElement.style.display = 'block';
+
+	innerImgs.forEach(img => (img === imgs ? (img.style.opacity = 1) : (img.style.opacity = 0.7)));
 }
 
 function magnify(imgID, zoom) {

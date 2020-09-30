@@ -16,11 +16,15 @@
 				<h1>Our Artists</h1>
 			</div>
 
-			<form class="float-right form-inline d-flex justify-content-center md-form form-sm active-purple-2"
-				method="POST" action="/home/search/artists" autocomplete="off" onsubmit="event.preventDefault();
-				displaySpinner(this,'searchBtn')">
-				<input class="form-control form-control-sm" type="text" placeholder="Search here ... "
-					aria-label="Search" name="search" id="search" />
+			<form
+				class="float-right form-inline d-flex justify-content-center md-form form-sm active-purple-2"
+				method="POST"
+				action="/home/search/artists"
+				autocomplete="off"
+				onsubmit="event.preventDefault();
+				displaySpinner(this,'searchBtn')"
+			>
+				<input class="form-control form-control-sm" type="text" placeholder="Search here ... " aria-label="Search" name="search" id="search" />
 				<button type="submit" id="searchBtn" class="searchBtn">
 					<i class="fa fa-search" aria-hidden="true"></i>
 				</button>
@@ -35,7 +39,7 @@
 			<div class="col-md-4">
 				<div class="details">
 					<div class="img">
-						<img src="/uploads/users/<%= artist.image %> " alt="" />
+						<img data-src="/uploads/users/<%= artist.image %>" class="lazy" alt="Artist Profile Pic" />
 					</div>
 					<div class="info">
 						<h3><%= artist.name %></h3>
@@ -95,5 +99,4 @@
 			</div>
 		</div>
 	</div>
-
 </div>
