@@ -27,12 +27,11 @@ module.exports = function Cart(oldCart) {
 		let storedItem = this.items[id];
 
 		if (flag) {
-
 			this.totalQty -= storedItem.qty;
 
 			if (storedItem.item.buyingFormat === 'Discount') {
 				this.totalPrice -= storedItem.item.discountPrice * storedItem.qty;
-			}else{
+			} else {
 				this.totalPrice -= storedItem.item.price * storedItem.qty;
 			}
 

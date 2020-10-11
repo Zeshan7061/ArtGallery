@@ -4,7 +4,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12 mb-0 clearfix">
-				<a href="./" class="float-left">Home</a><span class="ml-2 mb-0 float-left">/</span>
+				<a href="/home" class="float-left">Home</a><span class="ml-2 mb-0 float-left">/</span>
 				<p class="text-black ml-2 float-left">Artist Profile</p>
 			</div>
 		</div>
@@ -164,6 +164,8 @@
 		</div>
 	</div>
 
+	<% if (artworks.length > 0) { %>
+
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12 text-center">
@@ -171,4 +173,6 @@
 			</div>
 		</div>
 	</div>
+
+	<% } %>
 </div>

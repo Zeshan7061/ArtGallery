@@ -48,7 +48,7 @@ module.exports = {
 
 			await User.findOne({
 				username: req.body.username,
-			}).then(user => {
+			}).then((user) => {
 				if (user != null) {
 					errors.push({
 						message: 'username already taken!',
@@ -96,7 +96,7 @@ module.exports = {
 
 				User.findOne({
 					email: email,
-				}).then(user => {
+				}).then((user) => {
 					if (user) {
 						errors.push({
 							message: 'Email already exists. Please log in.',
@@ -145,7 +145,7 @@ module.exports = {
 
 								sendEmail(process.env.EMAIL, req.body.email, 'Email Verification', html);
 
-								user.save().then(async savedUser => {
+								user.save().then(async (savedUser) => {
 									req.flash('success_msg', 'We have sent a confirmation link to your email. Please verify your email.');
 									//   req.flash(
 									//     'success_msg',
@@ -231,7 +231,7 @@ module.exports = {
 								email: email,
 							},
 							async (err, user) => {
-								assert.equal(null, err);
+								assert.strictEqual(null, err);
 
 								if (!user) {
 									return done(null, false, {
@@ -240,7 +240,7 @@ module.exports = {
 								}
 
 								bcrypt.compare(password, user.password, async (err, matched) => {
-									assert.equal(null, err);
+									assert.strictEqual(null, err);
 
 									if (user.blockTime && Math.floor((new Date().getTime() - user.blockTime) / 1000 < 300)) {
 										return done(null, false, "You can't login for 5 minutes due to many failed login attempts.");
@@ -305,7 +305,7 @@ module.exports = {
 		User.findOne({
 			slug: req.params.slug,
 		})
-			.then(user => {
+			.then((user) => {
 				let categories = [];
 				categories = Category.find();
 
@@ -316,7 +316,7 @@ module.exports = {
 						categories,
 					});
 			})
-			.catch(err => console.log(err));
+			.catch((err) => console.log(err));
 	},
 	artistProfile: async (req, res, next) => {
 		try {
@@ -418,7 +418,7 @@ module.exports = {
 
 			if (req.files) {
 				if (user.image != 'user.jpg' && fs.existsSync(`./public/uploads/user/${user.image}`)) {
-					fs.unlink(`./public/uploads/users/${user.image}`, err => {
+					fs.unlink(`./public/uploads/users/${user.image}`, (err) => {
 						if (err) throw err;
 					});
 				}
@@ -426,7 +426,7 @@ module.exports = {
 				let file = req.files.file;
 				user.image = file.name;
 
-				file.mv('./public/uploads/users/' + file.name, err => {
+				file.mv('./public/uploads/users/' + file.name, (err) => {
 					if (err) throw err;
 				});
 			}
@@ -469,7 +469,7 @@ module.exports = {
 	updatePassword: (req, res) => {
 		User.findOne({
 			_id: req.params.id,
-		}).then(user => {
+		}).then((user) => {
 			let errors = [];
 			if (!req.body.password || !req.body.confirmPassword) {
 				errors.push({
@@ -491,11 +491,11 @@ module.exports = {
 			} else {
 				User.findOne({
 					_id: req.params.id,
-				}).then(user => {
+				}).then((user) => {
 					bcrypt.genSalt(10, (err, salt) => {
 						bcrypt.hash(req.body.password, salt, (err, hash) => {
 							user.password = hash;
-							user.save().then(savedUser => {
+							user.save().then((savedUser) => {
 								req.flash('success_msg', 'Your password has been changed succesfully.');
 
 								res.redirect('/admin/users/account');
@@ -521,7 +521,7 @@ module.exports = {
 	},
 
 	userInbox: (req, res, next) => {
-		User.findById(req.params.id).then(user => {
+		User.findById(req.params.id).then((user) => {
 			res.render('admin/users/inbox', {
 				title: 'Inbox',
 				chats: user.chat,
@@ -647,7 +647,7 @@ module.exports = {
 		let categories = [];
 		categories = await Category.find();
 
-		User.findById(req.params.id).then(user => {
+		User.findById(req.params.id).then((user) => {
 			let errors = [];
 			if (!req.body.password || !req.body.confirmPassword) {
 				errors.push({
@@ -669,11 +669,11 @@ module.exports = {
 					categories,
 				});
 			} else {
-				User.findById(req.params.id).then(user => {
+				User.findById(req.params.id).then((user) => {
 					bcrypt.genSalt(10, (err, salt) => {
 						bcrypt.hash(req.body.password, salt, (err, hash) => {
 							user.password = hash;
-							user.save().then(savedUser => {
+							user.save().then((savedUser) => {
 								req.flash('success_msg', 'Your password has been reset succesfully. Log in to continue');
 
 								res.redirect('/home/login');
@@ -687,7 +687,7 @@ module.exports = {
 
 	addToWishlist: async (req, res, next) => {
 		User.findById(req.user.id)
-			.then(async user => {
+			.then(async (user) => {
 				const wishlist = user.wishlist;
 				const slug = req.params.slug;
 
@@ -701,13 +701,13 @@ module.exports = {
 					req.flash('success_msg', 'Item added to your wishlist.');
 				}
 
-				user.save(savedUser => {
+				user.save((savedUser) => {
 					if (req.originalUrl.includes('home')) {
 						res.redirect('/home/productpage/' + artwork.slug);
 					} else res.redirect('/admin/users/wishlist/' + req.user.id);
 				});
 			})
-			.catch(err => console.log(err));
+			.catch((err) => console.log(err));
 	},
 
 	placeBid: async (req, res, next) => {
