@@ -23,7 +23,12 @@
 			<div class="col-md-4 profile-wrapper">
 				<div class="row justify-content-center">
 					<div class="profile-img mt-3">
-						<img src="/uploads/users/<%= artist.image %>" alt="" class="img-fluid rounded-circle" width="180" style="box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3); border: 1px solid black" />
+						<img
+							src="/uploads/users/<%= artist.image %>"
+							alt=""
+							class="img-fluid rounded-circle"
+							style="box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3); border: 1px solid black; width: 200px !important; height: 200px !important"
+						/>
 						<input type="hidden" value="<%= artist.image %>" id="artistImage" />
 					</div>
 					<div class="mt-4 justify-content-center">

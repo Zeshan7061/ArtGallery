@@ -86,6 +86,9 @@
 
 						<% if (post.buyingFormat == 'Auction') { %>
 						<a href="/home/biddingroom/placebid/<%= post.id %>" class="btn btn-primary">View More</a>
+						<h5 class="mt-2 float-right">
+							<span>$<%= post.price %> </span>
+						</h5>
 						<% } else { %>
 						<a href="/home/productpage/<%=post.slug%>" class="btn btn-primary">View More</a>
 						<% } %> <% if (post.buyingFormat != 'Auction' ) { %>
@@ -97,7 +100,7 @@
 
 							<div class="clearfix"></div>
 							<% } else { %>
-							<span>$ <%= post.price %> </span>
+							<span>$<%= post.price %> </span>
 							<% } %>
 						</h5>
 						<% } %>

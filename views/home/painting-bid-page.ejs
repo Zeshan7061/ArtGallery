@@ -88,13 +88,13 @@
 
 					<p>
 						<span class="float-left mb-1 artwork-text-head"> Starting Bid Price:</span>
-						<span class="float-right" style="margin-top: 1px"> $ <%= post.price %> </span>
+						<span class="float-right" style="margin-top: 1px"> $<%= post.price %> </span>
 					</p>
 					<div class="clearfix"></div>
 
 					<p>
-						<span class="float-left mb-1 artwork-text-head"> Current Bid:</span>
-						<span class="float-right" style="margin-top: 1px"> <% if (post.bidInfo.amount > 0) { %> <%= post.bidInfo.amount %>$ by <%= post.bidInfo.bidder %> <% } %> </span>
+						<span class="float-left mb-1 artwork-text-head"><%= post.bidInfo.status === 'Auction Ended' ? 'Last Bid:' : 'Current Bid:' %> </span>
+						<span class="float-right" style="margin-top: 1px"> <% if (post.bidInfo.amount > 0) { %> $<%= post.bidInfo.amount %> by <%= post.bidInfo.bidder %> <% } %> </span>
 					</p>
 					<div class="clearfix"></div>
 					<% if (user == undefined) { %>
